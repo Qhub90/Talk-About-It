@@ -37,6 +37,8 @@ mongoose.connect("mongodb://localhost/Talkdb");
 
 app.get("/", function(req, res){
 
+    res.render("index")
+
   axios.get("http://www.chicagotribune.com/news/local/politics/").then(function(response){
 
     var $ = cheerio.load(response.data);
@@ -64,16 +66,43 @@ app.get("/", function(req, res){
           }) 
         });
 
-        db.Article.find({})
+  });
+
+})
+
+app.get("/articles", function(req, res){
+
+    db.Article.find({})
           .then(function(data){
-              res.render("index", {Articles : data})
+              res.render("scraped", {Articles : data})
           })
           .catch(function(err){
               res.json(err);
           });
+});
 
-  });
+app.post("/myarticles", function(req, res){
+    db.MyArticles.create(results)
+    .then(function(data){
+        console.log("-------85" + data+"---------")
+    })
+    .catch(function(err){
+        return res.json(err);
+    })
 
+})
+
+
+// I changed the one above
+app.get("/MyArticles", function(req, res){
+    
+    db.MyArticle.find({})
+          .then(function(data){
+              res.render("", {Articles : data})
+          })
+          .catch(function(err){
+              res.json(err);
+          });
 })
 
 
