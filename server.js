@@ -55,7 +55,7 @@ app.get("/", function(req, res){
           .children("a")
           .attr("href");
 
-          db.Article.create(result)
+          db.Articles.create(result)
           .then(function(dbArticle) {
             // View the added result in the console
             console.log("-------Line 59 " + dbArticle + "------");
@@ -72,7 +72,7 @@ app.get("/", function(req, res){
 
 app.get("/articles", function(req, res){
 
-    db.Article.find({})
+    db.Articles.find({})
           .then(function(data){
               res.render("scraped", {Articles : data})
           })
@@ -82,7 +82,7 @@ app.get("/articles", function(req, res){
 });
 
 app.post("/myarticles", function(req, res){
-    db.MyArticles.create(results)
+    db.MyArticles.create(res)
     .then(function(data){
         console.log("-------85" + data+"---------")
     })
@@ -94,7 +94,7 @@ app.post("/myarticles", function(req, res){
 
 
 // I changed the one above
-app.get("/MyArticles", function(req, res){
+app.get("/myarticles", function(req, res){
     
     db.MyArticle.find({})
           .then(function(data){
