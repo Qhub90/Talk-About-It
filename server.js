@@ -66,7 +66,7 @@ app.get("/", function(req, res){
 
         db.Article.find({})
           .then(function(data){
-              res.render("index",data)
+              res.render("index", {Articles : data})
           })
           .catch(function(err){
               res.json(err);
