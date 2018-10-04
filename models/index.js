@@ -2,7 +2,6 @@
 
 module.exports = {
     Articles: require("./Article"),
-    MyArticles:require("./MyArticle"),
     Comment: require("./Comment")
   };
   
