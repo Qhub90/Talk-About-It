@@ -33,6 +33,14 @@ app.set('view engine', 'handlebars');
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/Talkdb");
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/Talkdb";
+
+// Set mongoose to leverage built in JavaScript ES6 Promises
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
+
+
 // At the root scrape the data from website
 
 app.get("/", function(req, res){
@@ -74,7 +82,7 @@ app.get("/articles", function(req, res){
 
     db.Articles.find({})
           .then(function(data){
-              res.render("scraped", {Articles : data})
+              res.render("index", {Articles : data})
           })
           .catch(function(err){
               res.json(err);

@@ -1,3 +1,14 @@
-<h1>Quotes App</h1>
+<div id="notes"></div>
 
-<p>Manage quotes with this app</p>
+
+<ul>
+  {{#each Articles}}
+    <li>
+      <p><span class="label">Title:</span> {{this.title}}</p>  
+      <p><span class="label">Link:</span> {{this.link}}</p>
+
+            <button data-id="{{this.id}}" data-title="{{this.title}}" data-link="{{this.link}}" class="comment">Comment</button>
+  
+    </li>
+  {{/each}} 
+</ul>
