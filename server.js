@@ -31,7 +31,8 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://Username:password90@ds127293.mlab.com:27293/heroku_17f5f67n";
+// var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/Talkdb";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://TalkDb:password123@ds129422.mlab.com:29422/heroku_35r4d8lw";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
